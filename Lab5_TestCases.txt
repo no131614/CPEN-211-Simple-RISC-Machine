@@ -1,0 +1,218 @@
+					
+
+					  Lab 5 Test Cases
+
+
+I. Test 1 - Testing ALU Module
+II. Test 2 - Testing Shifter with ALU
+III. Test 3 - Testing SourceMux with ALU
+IV. Test 4 - Testing Extreme Values and Status Output
+
+_______________________________________________________________________________________________________
+
+I. Test 1 - Testing ALU module:
+ 	Adding 7 and 2, Output = 0009 (9)
+	Subtracting 7 and 2, Output = 0005 (5)
+	Anding 7 and 2, Output = 0005 (5)
+	Taking ~2, Output = FFFd 
+
+------------------------------------
+Input: 00000010                    
+                                   
+write[0]     :   1                 
+readnum[3:1] : 000                 
+writenum[3:1]: 000                
+vsel[4]      :   1                 
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 000
+writenum[3:1]: 000
+vsel[4]      :   1
+loada[5]     :   0
+loadb[6]     :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Input: 00000111
+
+write[0]     :   1
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+loada[5]     :   1
+loadb[6]     :   0
+------------------------------------
+Press KEY[0]
+------------------------------------
+shift[2:1]   :   0
+asel[3]      :   0
+bsel[4]      :   0
+ALUop[6:5]   :  00 or 01 or 10 or 11
+loadc[7]     :   1
+loads[8]     :   1
+
+_______________________________________________________________________________________________________
+
+II. Test 2 - Testing shifter with ALU:
+	Adding 5 and 15(shifted left), Output = 0023 (35)
+	Adding 5 and 15(shifted right), Output = 000C (12)
+	*Adding 5 and 15(shifted right with replacing value), Output = 000C (12)
+
+------------------------------------
+Input: 00001111                    
+                                   
+write[0]     :   1                 
+readnum[3:1] : 000                 
+writenum[3:1]: 000                
+vsel[4]      :   1                 
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 000
+writenum[3:1]: 000
+vsel[4]      :   1
+loada[5]     :   0
+loadb[6]     :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Input: 00000101
+
+write[0]     :   1
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+loada[5]     :   1
+loadb[6]     :   0
+------------------------------------
+Press KEY[0]
+------------------------------------
+shift[2:1]   :  01 or 10 or 11
+asel[3]      :   0
+bsel[4]      :   0
+ALUop[6:5]   :  00
+loadc[7]     :   1
+loads[8]     :   1
+
+_______________________________________________________________________________________________________
+
+III. Test 3 - Testing SourceMux with ALU:
+	Adding 2 and 7 with asel turned on, Output = 0002 (2)
+	Adding 2 and 7 with bsel turned on, Output = 000E (14)
+	Adding 2 and 7 with asel and bsel turned on, Output = 0007 (7)	
+
+------------------------------------
+Input: 00000010                    
+                                   
+write[0]     :   1                 
+readnum[3:1] : 000                 
+writenum[3:1]: 000                
+vsel[4]      :   1                 
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 000
+writenum[3:1]: 000
+vsel[4]      :   1
+loada[5]     :   0
+loadb[6]     :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Input: 00000111
+
+write[0]     :   1
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+loada[5]     :   1
+loadb[6]     :   0
+------------------------------------
+Press KEY[0]
+------------------------------------
+shift[2:1]   :   0
+asel[3]      :   0 or 1
+bsel[4]      :   0 or 1
+ALUop[6:5]   :  00
+loadc[7]     :   1
+loads[8]     :   1
+
+_______________________________________________________________________________________________________
+
+IV. Test 4 - Testing Extreme Values and Status Output
+	Adding 0 and 255, Output = 00FF (255)
+	Anding 0 and 255, Output = 0000 (0) ----> Status LED is now on.
+	
+------------------------------------
+Input: 00000000                    
+                                   
+write[0]     :   1                 
+readnum[3:1] : 000                 
+writenum[3:1]: 000                
+vsel[4]      :   1                 
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 000
+writenum[3:1]: 000
+vsel[4]      :   1
+loada[5]     :   0
+loadb[6]     :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Input: 11111111
+
+write[0]     :   1
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+------------------------------------
+Press KEY[0]
+------------------------------------
+Write[0]     :   0
+readnum[3:1] : 001
+writenum[3:1]: 001
+vsel[4]      :   1
+loada[5]     :   1
+loadb[6]     :   0
+------------------------------------
+Press KEY[0]
+------------------------------------
+shift[2:1]   :   0
+asel[3]      :   0
+bsel[4]      :   0
+ALUop[6:5]   :  00
+loadc[7]     :   1
+loads[8]     :   1
+
+_______________________________________________________________________________________________________
+
+
+
